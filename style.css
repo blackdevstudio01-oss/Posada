@@ -27,6 +27,7 @@ body {
 
 .all-contain {
   margin: 0 auto;
+  overflow: hidden;
 
   max-width: 430px;
   width: 430px;
@@ -41,7 +42,7 @@ body {
   background-image: url(assets-posada/fondo-section-sing-up.webp);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: center;
 
   display: flex;
   justify-content: center;
@@ -56,7 +57,7 @@ body {
   background-image: url(assets-posada/fondo-sing-up.webp);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: center;
 
   display: flex;
   flex-direction: column;
