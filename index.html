@@ -21,14 +21,26 @@
             CODIGO PARA <br />
             ENTRAR
           </h1>
-          <form class="frm-sing-up" action="">
-            <input class="psw-sing-up" type="text" placeholder="Escribe Aqui" />
+          <form class="frm-sing-up" action="" id="form-acceso">
+            <input
+              class="psw-sing-up"
+              type="text"
+              id="codigo"
+              autocomplete="off"
+              placeholder="Escribe Aqui"
+              required
+            />
+
+            <button type="submit" id="btn-entrar" class="btn-sing-up">
+              ABRIR INVITACION
+            </button>
+
+            <p id="mensaje-error" role="status" aria-live="polite"></p>
           </form>
-          <button class="btn-sing-up">ABRIR INVITACION</button>
         </div>
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <script type="module" src="./js/acceso.js"></script>
   </body>
 </html>
