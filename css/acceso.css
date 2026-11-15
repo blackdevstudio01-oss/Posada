@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --verde: #263c36;
+  --dorado: #c9a777;
+  --rojo: #e84b58;
+  --blanco: #ffffff;
+  --crema: #eee0ce;
+  --verder-claro: #c9d093;
+
+  --amsterdam: "WindSong", cursive;
+  --source: "Source Serif 4", serif;
+  --cursive: "Birthstone", cursive;
+  --bodoni: "Bodoni Moda", serif;
+  --eb: "EB Garamond", serif;
+  --italic: "Merriweather", serif;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+.all-contain {
+  margin: 0 auto;
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 430px;
+  min-height: 100svh;
+
+  background-color: #263c36;
+}
+
+.sing-up {
+  overflow: hidden;
+  width: 100%;
+  height: 100svh;
+  background-image: url(assets-posada/fondo-section-sing-up.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-sing-up {
+  width: 70%;
+  height: 70%;
+
+  background-image: url(assets-posada/fondo-sing-up.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  text-align: center;
+}
+
+.title-sing-up {
+  color: var(--dorado);
+  font-family: var(--source);
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.psw-sing-up {
+  background-color: #c9a777;
+  border: none;
+  opacity: 40%;
+
+  text-align: center;
+  padding: 2rem 0.3rem;
+  border-radius: 2rem;
+
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.btn-sing-up {
+  background-color: var(--dorado);
+  border: none;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 2rem;
+  text-align: center;
+
+  font-family: var(--source);
+}
