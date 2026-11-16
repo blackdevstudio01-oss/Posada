@@ -8,10 +8,9 @@ const boton = document.getElementById("btn-entrar");
 
 // 2. Escuchamos el envío del formulario
 formulario.addEventListener("submit", async (evento) => {
-  // Evitamos que la página se recargue
   evento.preventDefault();
 
-  // Obtenemos el código escrito por el invitado
+  // Obtenemos el código
   const codigo = inputCodigo.value.trim();
 
   // Limpiamos mensajes anteriores
@@ -22,37 +21,47 @@ formulario.addEventListener("submit", async (evento) => {
     return;
   }
 
-  // Deshabilitamos el botón mientras consultamos
+  // Deshabilitamos el botón
   boton.disabled = true;
   boton.textContent = "VERIFICANDO...";
 
   try {
-    // 3. Llamamos a la función SQL de Supabase
-    const { data, error } = await supabase.rpc("validar_codigo", {
-      codigo_ingresado: codigo,
-    });
+    // 3. Llamamos a nuestra Edge Function
+    const { data, error } = await supabase.functions.invoke(
+      "acceso-invitacion",
+      {
+        body: { codigo: codigo },
+      },
+    );
 
-    // 4. Verificamos errores de conexión
+    // 4. Revisamos errores HTTP
     if (error) {
+      if (error.context?.status === 401) {
+        mensaje.textContent = "Código incorrecto o inactivo.";
+        return;
+      }
+
       throw error;
     }
 
-    // 5. Revisamos si el código es válido
-    if (data === true) {
-      // Solo controla la navegación visual
-      sessionStorage.setItem("invitacion_validada", "true");
+    // 5. Comprobamos la respuesta del servidor
+    if (data?.autorizado === true && data?.token) {
+      // Guardamos el token temporal
+      sessionStorage.setItem("token_invitacion", data.token);
 
-      // Redirigimos a la invitación
+      // Eliminamos el indicador anterior
+      sessionStorage.removeItem("invitacion_validada");
+
+      // Abrimos la invitación
       window.location.href = "./invitacion.html";
     } else {
-      mensaje.textContent = "Código incorrecto o inactivo.";
+      mensaje.textContent = "No se pudo validar el acceso.";
     }
   } catch (error) {
-    console.error("Error de validación:", error);
+    console.error("Error de acceso:", error);
 
-    mensaje.textContent = "No pudimos verificar el código. Intenta nuevamente.";
+    mensaje.textContent = "Error de conexión. Intenta nuevamente.";
   } finally {
-    // Restauramos el botón
     boton.disabled = false;
     boton.textContent = "ABRIR INVITACIÓN";
   }

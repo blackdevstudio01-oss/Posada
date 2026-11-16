@@ -1,3 +1,7 @@
+[hidden] {
+  display: none !important;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -63,6 +67,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 .title-intro {
@@ -95,12 +100,6 @@ body {
   height: auto;
 
   margin-bottom: 1rem;
-}
-
-.btns-intro {
-  width: 80%;
-  height: 10%;
-  background-color: #e84b58;
 }
 
 .place,
@@ -165,7 +164,7 @@ body {
 }
 
 .btn-place {
-  width: 50%;
+  width: 75%;
   height: 6%;
 
   border-radius: 3rem;
@@ -176,7 +175,7 @@ body {
   color: var(--blanco);
   font-family: var(--source);
   font-style: italic;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
 }
 
 .date-content-contain {
@@ -191,6 +190,8 @@ body {
   align-items: center;
 
   gap: 4rem;
+
+  text-align: center;
 }
 
 .title-date {
@@ -211,10 +212,25 @@ body {
   height: auto;
 }
 
-.counter {
+.contador {
+  padding: 0 auto;
   width: 90%;
   height: 10%;
-  background-color: #e84b58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--rojo);
+  font-family: var(--italic);
+  gap: 1.5rem;
+}
+
+.contador span {
+  font-size: 3.2rem;
+}
+
+.contador p {
+  font-size: 1.2rem;
 }
 
 .rsvp {
@@ -284,4 +300,53 @@ body {
   font-size: 1.6rem;
 
   box-shadow: 0px 1px 15px rgba(255, 255, 255, 0.9);
+}
+
+.btn-musica {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid #e4c997;
+
+  background-color: #30453e;
+  color: #e4c997;
+
+  cursor: pointer;
+  z-index: 1000;
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.btn-musica svg {
+  width: 25px;
+  height: 25px;
+}
+
+.btn-musica:active {
+  transform: scale(0.92);
+}
+
+/* Por defecto la música está pausada */
+.icono-sonando {
+  display: none;
+}
+
+/* Cuando la música está reproduciéndose */
+.btn-musica.reproduciendo .icono-sonando {
+  display: block;
+}
+
+.btn-musica.reproduciendo .icono-pausado {
+  display: none;
 }

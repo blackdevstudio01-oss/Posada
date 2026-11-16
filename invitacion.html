@@ -14,15 +14,66 @@
     <link rel="stylesheet" href="css/invitacion.css" />
   </head>
   <body>
-    <main class="all-contain">
+    <!-- Mensaje mientras verificamos la sesión -->
+    <p id="mensaje-carga">Verificando acceso...</p>
+
+    <main class="all-contain" id="contenido-invitacion" hidden>
       <section class="intro">
         <div class="intro-wlp">
           <h2 class="title-intro">Querida Familia</h2>
           <p class="text-1-intro">HAGAMOS UNA POSADA</p>
           <h3 class="title-2-intro">Posada</h3>
-          <p class="text-2-intro">Navidena</p>
+          <p class="text-2-intro">Navideña</p>
           <img src="assets-posada/SVG/fecha-img.svg" class="img-intro" alt="" />
-          <div class="btns-intro"></div>
+          <div class="btns-intro">
+            <!-- Reproductor de música -->
+            <audio id="musica-fondo" loop preload="auto">
+              <source
+                src="./assets-posada/music/beat-posada.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+
+            <button
+              id="btn-musica"
+              class="btn-musica"
+              type="button"
+              aria-label="Reproducir música"
+              aria-pressed="false"
+            >
+              <!-- Icono: música encendida -->
+              <svg
+                class="icono-sonando"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                <path d="M19 5a10 10 0 0 1 0 14" />
+              </svg>
+
+              <!-- Icono: música pausada -->
+              <svg
+                class="icono-pausado"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                <path d="m17 9 5 6" />
+                <path d="m22 9-5 6" />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -43,7 +94,9 @@
               alt=""
             />
 
-            <button class="btn-place">Ubicacion</button>
+            <button class="btn-place" id="btn-ubicacion" type="button">
+              VER UBICACIÓN
+            </button>
           </div>
         </div>
       </section>
@@ -58,7 +111,27 @@
               src="assets-posada/SVG/icon-date.svg"
               alt=""
             />
-            <div class="counter"></div>
+            <div class="contador">
+              <div>
+                <span id="dias">00</span>
+                <p>Días</p>
+              </div>
+
+              <div>
+                <span id="horas">00</span>
+                <p>Horas</p>
+              </div>
+
+              <div>
+                <span id="minutos">00</span>
+                <p>Minutos</p>
+              </div>
+
+              <div>
+                <span id="segundos">00</span>
+                <p>Segundos</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -74,10 +147,17 @@
             <p class="text-rsvp">
               Hagamos un Grupo de Whatsapp y Organicémonos
             </p>
-            <button class="btn-rsvp">ENVIAR MENSAJE</button>
+            <button class="btn-rsvp" id="btn-whatsapp" type="button">
+              ENVIAR MENSAJE
+            </button>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Mensaje para errores de conexión -->
+    <p id="mensaje-acceso" role="alert" hidden></p>
+
+    <script type="module" src="./js/invitacion.js"></script>
   </body>
 </html>
